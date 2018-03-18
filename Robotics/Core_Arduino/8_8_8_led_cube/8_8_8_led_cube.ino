@@ -1,0 +1,508 @@
+#include<ShiftRegister74HC595.h>
+
+ShiftRegister74HC595 sr(9,4,6,5);
+
+void setup()
+{
+  Serial.begin(9600);
+  pinMode(3,OUTPUT);
+  pinMode(9,OUTPUT);
+  pinMode(10,OUTPUT);
+  pinMode(11,OUTPUT);
+  sr.setAllLow();
+  digitalWrite(3,LOW);
+  digitalWrite(9,LOW);
+  digitalWrite(10,LOW);
+  digitalWrite(11,LOW);
+}
+int m,n,i,k;
+float j;
+void A(int k)
+{
+for(i=0;i<7;i++)
+sr.set(i,HIGH);
+sr.set(k,HIGH);
+delayMicroseconds(300);
+sr.set(k,LOW);
+for(i=0;i<7;i++)
+sr.set(i,LOW);
+sr.set(7,HIGH);
+sr.set(3,HIGH);
+sr.set(k+1,HIGH);
+delayMicroseconds(300);
+sr.set(k+1,LOW);
+sr.set(k+2,HIGH);
+delayMicroseconds(300);
+sr.set(k+2,LOW);
+sr.set(k+3,HIGH);
+delayMicroseconds(300);
+sr.set(k+3,LOW);
+sr.set(k+4,HIGH);
+delayMicroseconds(300);
+sr.set(k+4,LOW);
+sr.set(7,LOW);
+for(i=0;i<7;i++)
+sr.set(i,HIGH);
+sr.set(k+5,HIGH);
+delayMicroseconds(300);
+sr.set(k+5,LOW);
+}
+
+void B(int k)
+{
+for(i=0;i<8;i++)
+sr.set(i,HIGH);
+sr.set(k,HIGH);
+delayMicroseconds(300);
+sr.set(k,LOW);
+for(i=0;i<8;i++)
+sr.set(i,LOW);
+sr.set(0,HIGH);
+sr.set(4,HIGH);
+sr.set(7,HIGH);
+sr.set(k+1,HIGH);
+delayMicroseconds(300);
+sr.set(k+1,LOW);
+sr.set(k+2,HIGH);
+delayMicroseconds(300);
+sr.set(k+2,LOW);
+sr.set(k+3,HIGH);
+delayMicroseconds(300);
+sr.set(k+3,LOW);
+sr.set(k+4,HIGH);
+delayMicroseconds(300);
+sr.set(k+4,LOW);
+for(i=0;i<8;i++)
+sr.set(i,HIGH);
+sr.set(0,LOW);
+sr.set(4,LOW);
+sr.set(7,LOW);
+sr.set(k+5,HIGH);
+delayMicroseconds(300);
+sr.set(k+5,LOW);
+}
+void K(int k)
+{
+for(i=0;i<8;i++)
+sr.set(i,HIGH);
+sr.set(k,HIGH);
+delayMicroseconds(300);
+sr.set(k,LOW);
+for(i=0;i<8;i++)
+sr.set(i,LOW);
+sr.set(4,HIGH);
+sr.set(k+1,HIGH);
+delayMicroseconds(300);
+sr.set(k+1,LOW);
+sr.set(4,LOW);
+sr.set(3,HIGH);
+sr.set(5,HIGH);
+sr.set(k+2,HIGH);
+delayMicroseconds(300);
+sr.set(k+2,LOW);
+sr.set(3,LOW);
+sr.set(5,LOW);
+sr.set(2,HIGH);
+sr.set(6,HIGH);
+sr.set(k+3,HIGH);
+delayMicroseconds(300);
+sr.set(k+3,LOW);
+sr.set(2,LOW);
+sr.set(6,LOW);
+sr.set(1,HIGH);
+sr.set(7,HIGH);
+sr.set(k+4,HIGH);
+delayMicroseconds(300);
+sr.set(k+4,LOW);
+sr.set(1,LOW);
+sr.set(7,LOW);
+sr.set(0,HIGH);
+sr.set(k+5,HIGH);
+delayMicroseconds(300);
+sr.set(k+5,LOW);
+}
+void P(int k)
+{
+for(i=0;i<8;i++)
+sr.set(i,HIGH);
+sr.set(k,HIGH);
+delayMicroseconds(300);
+sr.set(k,LOW);
+for(i=0;i<8;i++)
+sr.set(i,LOW);
+sr.set(4,HIGH);
+sr.set(7,HIGH);
+sr.set(k+1,HIGH);
+delayMicroseconds(300);
+sr.set(k+1,LOW);
+sr.set(k+2,HIGH);
+delayMicroseconds(300);
+sr.set(k+2,LOW);
+sr.set(k+3,HIGH);
+delayMicroseconds(300);
+sr.set(k+3,LOW);
+sr.set(4,LOW);
+sr.set(7,LOW);
+sr.set(5,HIGH);
+sr.set(6,HIGH);
+sr.set(k+4,HIGH);
+delayMicroseconds(300);
+sr.set(k+4,LOW);
+}
+void R(int k)
+{
+for(i=0;i<8;i++)
+sr.set(i,HIGH);
+sr.set(k,HIGH);
+delayMicroseconds(300);
+sr.set(k,LOW);
+for(i=0;i<8;i++)
+sr.set(i,LOW);
+sr.set(4,HIGH);
+sr.set(7,HIGH);
+sr.set(k+1,HIGH);
+delayMicroseconds(300);
+sr.set(k+1,LOW);
+sr.set(k+2,HIGH);
+delayMicroseconds(300);
+sr.set(k+2,LOW);
+sr.set(3,HIGH);
+sr.set(k+3,HIGH);
+delayMicroseconds(300);
+sr.set(k+3,LOW);
+sr.set(4,LOW);
+sr.set(3,LOW);
+sr.set(7,LOW);
+sr.set(5,HIGH);
+sr.set(6,HIGH);
+sr.set(0,HIGH);
+sr.set(1,HIGH);
+sr.set(2,HIGH);
+sr.set(k+4,HIGH);
+delayMicroseconds(300);
+sr.set(k+4,LOW);
+}
+void  N(int k)
+{
+for(i=1;i<8;i++)
+sr.set(i,HIGH);
+sr.set(k,HIGH);
+delayMicroseconds(300);
+sr.set(k,LOW);
+for(i=1;i<8;i++)
+sr.set(i,LOW);
+sr.set(6,HIGH);
+sr.set(k+1,HIGH);
+delayMicroseconds(300);
+sr.set(k+1,LOW);
+sr.set(6,LOW);
+sr.set(5,HIGH);
+sr.set(k+2,HIGH);
+delayMicroseconds(300);
+sr.set(k+2,LOW);
+sr.set(5,LOW);
+sr.set(4,HIGH);
+sr.set(k+3,HIGH);
+delayMicroseconds(300);
+sr.set(k+3,LOW);
+sr.set(4,LOW);
+sr.set(3,HIGH);
+sr.set(k+4,HIGH);
+delayMicroseconds(300);
+sr.set(k+4,LOW);
+sr.set(3,LOW);
+sr.set(2,HIGH);
+sr.set(k+5,HIGH);
+delayMicroseconds(300);
+sr.set(k+5,LOW);
+sr.set(2,LOW);
+for(i=1;i<8;i++)
+sr.set(i,HIGH);
+sr.set(k+6,HIGH);
+delayMicroseconds(300);
+sr.set(k+6,LOW);
+}
+void I(int k)
+{
+sr.set(0,HIGH);
+sr.set(7,HIGH);
+sr.set(k-1,HIGH);
+delayMicroseconds(300);
+sr.set(k-1,LOW);
+sr.set(k,HIGH);
+delayMicroseconds(300);
+sr.set(k,LOW);
+sr.set(k+1,HIGH);
+delayMicroseconds(300);
+sr.set(k+1,LOW);
+for(i=0;i<8;i++)
+sr.set(i,HIGH);
+sr.set(k+2,HIGH);
+delayMicroseconds(300);
+sr.set(k+2,LOW);
+for(i=1;i<7;i++)
+sr.set(i,LOW);
+sr.set(k+3,HIGH);
+delayMicroseconds(300);
+sr.set(k+3,LOW);
+sr.set(k+4,HIGH);
+delayMicroseconds(300);
+sr.set(k+4,LOW);
+sr.set(k+5,HIGH);
+delayMicroseconds(300);
+sr.set(k+5,LOW);
+}
+char val;
+int brightness=0,fadeAmount=5;
+void loop()
+{
+//pattern1
+ for(i=8;i<72;i++)
+ sr.set(i,HIGH);
+ for(i=0;i<10;i++)
+ {for(j=0;j<8;j++)
+ {sr.set(j,HIGH);
+ delay(100);
+ sr.set(j,LOW);}}
+
+ //pattern2
+ sr.setAllHigh();
+ for(i=0;i<200;i++)
+ {analogWrite(3, brightness);
+ analogWrite(9, brightness);
+ analogWrite(10, brightness);
+ analogWrite(11, brightness);
+  brightness = brightness + fadeAmount;
+  if (brightness <= 0 || brightness >= 255) {
+    fadeAmount = -fadeAmount;
+  }
+  delay(50);}
+  digitalWrite(3,LOW);
+  digitalWrite(9,LOW);
+  digitalWrite(10,LOW);
+  digitalWrite(11,LOW);
+
+ //pattern3
+ sr.setAllLow();
+ for(i=0;i<8;i++)
+ sr.set(i,HIGH);
+ for(m=0;m<10;m++)
+ {for(k=8;k<=15;k++)
+ {for(i=k;i<72;i+=8)
+ {
+  sr.set(i,HIGH);
+ }
+ delay(100);
+ for(i=k;i<72;i+=8)
+ {
+  sr.set(i,LOW);
+ }}}
+
+ //pattern4
+ for(i=8;i<72;i++)
+ sr.set(i,HIGH);
+ for(i=7;i>=0;i--)
+ {
+ for(j=0;j<i;j++)
+ {sr.set(j,HIGH);
+ delay(300);
+ sr.set(j,LOW);}
+ sr.set(i,HIGH);}
+
+ //pattern5
+ for(m=15;m>=8;m--)
+ {for(k=8;k<=m;k++)
+ {for(i=k;i<72;i+=8)
+ {
+  sr.set(i,HIGH);
+ }
+ delay(300);
+ for(i=k;i<72;i+=8)
+ {
+  sr.set(i,LOW);
+ }
+ }
+ for(i=m;i<72;i+=8)
+ {
+  sr.set(i,HIGH);
+ }
+ }sr.setAllLow();
+ delay(1000);
+
+ //pattern6
+ for(m=0;m<4;m++)
+ {for(i=8;i<72;i++)
+ sr.set(i,HIGH);
+ sr.set(0,HIGH);
+ delay(1000);
+ for(i=8;i<72;i+=8)
+ {sr.set(i,LOW);sr.set(i+7,LOW);}
+ for(i=8;i<=15;i++)
+ {sr.set(i,LOW);sr.set(i+56,LOW);}
+ sr.set(1,HIGH);
+ delay(1000);
+ for(i=17;i<64;i+=8)
+ {sr.set(i,LOW);sr.set(i+5,LOW);}
+ for(i=17;i<=22;i++)
+ {sr.set(i,LOW);sr.set(i+40,LOW);}
+ sr.set(2,HIGH);
+ delay(1000);
+ for(i=26;i<56;i+=8)
+ {sr.set(i,LOW);sr.set(i+3,LOW);}
+ for(i=26;i<=29;i++)
+ {sr.set(i,LOW);sr.set(i+24,LOW);}
+ sr.set(3,HIGH);
+ delay(1000);
+ sr.set(3,LOW);
+ sr.set(2,LOW);
+ sr.set(1,LOW);
+ sr.set(0,LOW);
+ for(i=4;i<=7;i++)
+ sr.set(i,HIGH);
+ delay(1000);
+ sr.set(4,LOW);
+ for(i=26;i<56;i+=8)
+ {sr.set(i,HIGH);sr.set(i+3,HIGH);}
+ for(i=26;i<=29;i++)
+ {sr.set(i,HIGH);sr.set(i+24,HIGH);}
+ delay(1000);
+ sr.set(5,LOW);
+ for(i=17;i<64;i+=8)
+ {sr.set(i,HIGH);sr.set(i+5,HIGH);}
+ for(i=17;i<=22;i++)
+ {sr.set(i,HIGH);sr.set(i+40,HIGH);}
+ delay(1000);
+ sr.set(6,LOW);
+ for(i=8;i<72;i+=8)
+ {sr.set(i,HIGH);sr.set(i+7,HIGH);}
+ for(i=8;i<=15;i++)
+ {sr.set(i,HIGH);sr.set(i+56,HIGH);}
+ delay(1000);
+ sr.setAllLow();}
+
+ //pattern7
+ for(m=0;m<10;m++)
+ {sr.setAllLow();
+ sr.set(35,HIGH);
+ sr.set(36,HIGH);
+ sr.set(43,HIGH);
+ sr.set(44,HIGH);
+ for(j=0;j<7;j++)
+ {sr.set(j,HIGH);
+ delay(100);
+ sr.set(j,LOW);}
+ sr.set(7,HIGH);
+ sr.set(0,HIGH);
+ delay(80);
+ for(i=26;i<56;i+=8)
+ {sr.set(i,HIGH);sr.set(i+3,HIGH);}
+ for(i=26;i<=29;i++)
+ {sr.set(i,HIGH);sr.set(i+24,HIGH);}
+ delay(80);
+ for(i=17;i<64;i+=8)
+ {sr.set(i,HIGH);sr.set(i+5,HIGH);}
+ for(i=17;i<=22;i++)
+ {sr.set(i,HIGH);sr.set(i+40,HIGH);}
+ delay(80);
+ for(i=8;i<72;i+=8)
+ {sr.set(i,HIGH);sr.set(i+7,HIGH);}
+ for(i=8;i<=15;i++)
+ {sr.set(i,HIGH);sr.set(i+56,HIGH);}}
+ 
+ //pattern8
+ for(m=0;m<4;m++)
+ {sr.setAllLow();
+ sr.set(35,HIGH);
+ sr.set(36,HIGH);
+ sr.set(43,HIGH);
+ sr.set(44,HIGH);
+ sr.set(3,HIGH);
+ sr.set(4,HIGH);
+ delay(500);
+ for(i=26;i<56;i+=8)
+ {sr.set(i,HIGH);sr.set(i+3,HIGH);}
+ for(i=26;i<=29;i++)
+ {sr.set(i,HIGH);sr.set(i+24,HIGH);}
+ sr.set(5,HIGH);
+ sr.set(2,HIGH);
+ delay(500);
+ for(i=17;i<64;i+=8)
+ {sr.set(i,HIGH);sr.set(i+5,HIGH);}
+ for(i=17;i<=22;i++)
+ {sr.set(i,HIGH);sr.set(i+40,HIGH);}
+ sr.set(6,HIGH);
+ sr.set(1,HIGH);
+ delay(500);
+ for(i=8;i<72;i+=8)
+ {sr.set(i,HIGH);sr.set(i+7,HIGH);}
+ for(i=8;i<=15;i++)
+ {sr.set(i,HIGH);sr.set(i+56,HIGH);}
+ sr.set(7,HIGH);
+ sr.set(0,HIGH);
+ delay(1000);
+ for(i=8;i<72;i+=8)
+ {sr.set(i,LOW);sr.set(i+7,LOW);}
+ for(i=8;i<=15;i++)
+ {sr.set(i,LOW);sr.set(i+56,LOW);}
+ sr.set(7,LOW);
+ sr.set(0,LOW);
+ delay(500);
+ for(i=17;i<64;i+=8)
+ {sr.set(i,LOW);sr.set(i+5,LOW);}
+ for(i=17;i<=22;i++)
+ {sr.set(i,LOW);sr.set(i+40,LOW);}
+ sr.set(6,LOW);
+ sr.set(1,LOW);
+ delay(500);
+ for(i=26;i<56;i+=8)
+ {sr.set(i,LOW);sr.set(i+3,LOW);}
+ for(i=26;i<=29;i++)
+ {sr.set(i,LOW);sr.set(i+24,LOW);}
+ sr.set(5,LOW);
+ sr.set(2,LOW);
+ delay(500);
+ sr.set(35,LOW);
+ sr.set(36,LOW);
+ sr.set(43,LOW);
+ sr.set(44,LOW);
+ delay(500);}
+
+//Name_display
+ for(j=65;j>0;j-=8)
+{
+  for(n=0;n<3;n++)
+  P(j);
+  sr.setAllLow();
+}
+for(j=65;j>0;j-=8)
+{
+  for(n=0;n<3;n++)
+  R(j);
+  sr.setAllLow();
+}
+for(j=65;j>0;j-=8)
+{
+  for(n=0;n<3;n++)
+  A(j);
+  sr.setAllLow();
+}
+for(j=65;j>0;j-=8)
+{
+  for(n=0;n<3;n++)
+  B(j);
+  sr.setAllLow();
+}
+for(j=65;j>0;j-=8)
+{
+  for(n=0;n<3;n++)
+  I(j);
+  sr.setAllLow();
+}
+for(j=65;j>0;j-=8)
+{
+  for(n=0;n<3;n++)
+  N(j);
+  sr.setAllLow();
+}
+ sr.setAllLow();
+}
