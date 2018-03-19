@@ -1,3 +1,5 @@
+# Shape following bot
+An autonomous bot that can physically follow some typical shapes infront of it in white background.
 ROS packages drive_pub,checkdata and Serialport for arduino
 
 alternative launch the drive.launch

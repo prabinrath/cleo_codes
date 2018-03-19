@@ -1,3 +1,7 @@
+/*
+The Game Of Life logic implementation in c++. We have to enter the relative coordinates of the defects before starting the infinite geration loop.
+*/
+
 #include<iostream>
 #include<stdio.h>
 #include<stdlib.h>
