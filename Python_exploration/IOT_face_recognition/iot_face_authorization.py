@@ -42,8 +42,8 @@ with open("pkr.jpg","rb") as image_file:
 
 headers = {
     'content-type':'application.json',
-    "app_id": "68425b9e",
-    "app_key": "d49d316025b88335192aac20358542f6"
+    "app_id": "Your app id",
+    "app_key": "Your app key"
 }
 
 payload_dict = {"image":encoded_string,"gallery_name":"MyGallery"}
