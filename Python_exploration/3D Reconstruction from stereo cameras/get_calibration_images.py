@@ -1,9 +1,20 @@
+'''
+Generates calibration training data
+Finds a chess board pattern in the image determined by ROWS and COLS global variables
+Generates count number of images pair for training
+Note : change the camera numbers accordingly before running the code
+Author: Prabin Rath
+'''
+from os.path import expanduser
 import numpy as np
 import cv2
 
 ROWS=9;COLS=6;count=50;
-train_path='/home/prabin/python/openCV_samples/stereovision/final/calibration_pictures/'
-capl = cv2.VideoCapture(2)
+train_path=expanduser('~')+'/calibration_pictures/'
+if not os.path.exists(train_path):
+    os.makedirs(train_path)
+
+capl = cv2.VideoCapture(2) #number varies for different systems
 capr = cv2.VideoCapture(3)
 i=0
 while i<count:
@@ -36,7 +47,3 @@ while i<count:
 	else:
 		print('Couldnt Find ChessBoard in both feeds')
 cv2.destroyAllWindows()
-		
-		
-		
-

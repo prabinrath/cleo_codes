@@ -1,12 +1,29 @@
+'''
+Generates depth map by taking the rectified video feed from a stereo pair
+Creates track bars to change the Block matcher parameters dynamically
+Saves the point cloud in a meshlab format when num 1 + Enter is pressed
+Note : change the camera numbers accordingly before running the code
+Author: Prabin Rath
+'''
+from sklearn.preprocessing import normalize
+from os.path import expanduser
 import numpy as np
 import thread
-from sklearn.preprocessing import normalize
+import sys
 import cv2
+import os
 
-capl = cv2.VideoCapture(2)
+data_path=expanduser('~')+'/calibration/'
+if not os.path.exists(data_path):
+    print('Calibration data not found')
+    sys.exit()
+pointcloud_save = expanduser('~')+'/pointclouds/'
+if not os.path.exists(pointcloud_save):
+    os.makedirs(pointcloud_save)
+
+capl = cv2.VideoCapture(2) #number varies for different systems
 capr = cv2.VideoCapture(3)
 
-data_path='/home/prabin/python/openCV_samples/stereovision/final/calibration/'
 undistortion_maps_left=np.load(data_path+'undistortion_map_left.npy')
 undistortion_maps_right=np.load(data_path+'undistortion_map_right.npy')
 rectification_maps_left=np.load(data_path+'rectification_maps_left.npy')
@@ -131,7 +148,7 @@ while True:
         mask = disparity_scaled > disparity_scaled.min()
         out_points = points[mask]
         out_colors = colors[mask]
-        out_fn = '/home/prabin/python/openCV_samples/stereovision/final/pointclouds/out'+str(index)+'.ply'
+        out_fn = pointcloud_save+'pointcloud'+str(index)+'.ply'
         write_ply(out_fn, out_points, out_colors)
         index+=1
         save=False

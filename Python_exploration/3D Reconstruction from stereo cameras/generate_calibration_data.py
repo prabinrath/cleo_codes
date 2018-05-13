@@ -1,10 +1,24 @@
+'''
+The code calibrates the stereo pair from the images saved by get_calibration_images.py
+Saves the calibrated parameters into a folder to be used for disparity map generation
+Author: Prabin Rath
+'''
+from os.path import expanduser
 import numpy as np
 import glob
+import sys
 import cv2
+import os
 
 ROWS=9;COLS=6;SQUARE_SIZE=2.5;
-train_path='/home/prabin/python/openCV_samples/stereovision/final/calibration_pictures/'
-data_path='/home/prabin/python/openCV_samples/stereovision/final/calibration/'
+train_path=expanduser('~')+'/calibration_pictures/'
+if not os.path.exists(train_path):
+    print('Calibration image folder not found')
+    sys.exit()
+data_path=expanduser('~')+'/calibration/'
+if not os.path.exists(data_path):
+    os.makedirs(data_path)
+
 images_right = glob.glob(train_path + 'right_*.jpg')
 images_left = glob.glob(train_path + 'left_*.jpg')
 images_left.sort()
