@@ -88,13 +88,19 @@ void leddisplay::disp(int data)
         }
     else
         {
-            while(data>0)
-            {
-                dat[dig]=data%10;
-                data/=10;
-                dig++;
-            }
-
+        	if(data==0)
+        	{
+        		dig=1;dat[0]=0;
+        	}
+        	else
+        	{
+		        while(data>0)
+		        {
+		            dat[dig]=data%10;
+		            data/=10;
+		            dig++;
+		        }
+			}
             if(dig==1)
                 {
                     for(int itr=0;itr<100;itr++)
