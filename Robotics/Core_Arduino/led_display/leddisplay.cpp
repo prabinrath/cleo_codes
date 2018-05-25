@@ -2,7 +2,7 @@
 #include "leddisplay.h"
 
 ShiftRegister74HC595 sr (2, 4, 5, 6);
-int c=0,d=1,e=2,f=3,g=4,h=5,i=6,j=7,k=8,l=9,m=10,n=11,o=12,p=13;
+int c=0,d=1,e=2,f=3,g=4,h=5,i=6,j=7,k=8,l=15,m=9,n=10,o=11,p=12,q=13,r=14;
 int seg=0,dig=0,dat[3];
 int pin[21][2]={{d,g},{c,g},{c,h},{c,f},{d,f},{d,i},{d,h},
                     {c,j},{d,j},{d,k},{d,l},{c,l},{c,i},{c,k},

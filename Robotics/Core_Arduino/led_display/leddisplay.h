@@ -6,12 +6,12 @@
 
 class leddisplay 
 {
-private:
-  void on(int pos,int neg);
-public:
-  void store(int col, int num);
-  void disp(int data);
-  void high();
+	private:
+  		void on(int pos,int neg);
+  	public:
+	    void store(int col, int num);
+	    void disp(int data);
+	    void high();
 };
 
 #endif
