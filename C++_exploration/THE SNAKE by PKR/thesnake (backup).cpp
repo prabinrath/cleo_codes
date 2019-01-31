@@ -1,6 +1,4 @@
-/*************THE SNAKE GAME by Prabin Rath***************START OF THE PROJECT(#' 'OX)
-Snake game as played in NOKIA sets is simulated in a terminal. Some additional features like game save,restart,life and score are added to the feature list along with score and levels. The entire code is from scratch and is developed with threading and file handling concepts.
-*/
+//*************THE SNAKE GAME by Prabin Rath***************START OF THE PROJECT(#' 'OX)
 #include<iostream>
 #include<unistd.h>//for delay
 #include<stdlib.h>
